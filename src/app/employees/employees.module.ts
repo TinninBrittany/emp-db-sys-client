@@ -4,6 +4,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeesComponent } from './employees.component';
+import { MaterialModuleModule } from '../shared/material-module/material-module.module';
 
 const components = [
   EmployeeListComponent,
@@ -20,7 +21,8 @@ const components = [
     ...components
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModuleModule
   ]
 })
 export class EmployeesModule { }
