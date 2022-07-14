@@ -5,6 +5,7 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeesComponent } from './employees.component';
 import { MaterialModuleModule } from '../shared/material-module/material-module.module';
+import { RouterModule } from '@angular/router';
 
 const components = [
   EmployeeListComponent,
@@ -13,16 +14,18 @@ const components = [
   EmployeesComponent
 ]
 
+
 @NgModule({
   declarations: [
-    ...components,
+    ...components
   ],
   exports: [
     ...components
   ],
   imports: [
     CommonModule,
-    MaterialModuleModule
+    MaterialModuleModule,
+    RouterModule
   ]
 })
 export class EmployeesModule { }
