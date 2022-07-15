@@ -1,7 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { catchError, filter, map, Observable, of, throwError, tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../shared/employee.model';
 import { EmployeesService } from '../shared/employees.service';
 
@@ -13,7 +11,6 @@ import { EmployeesService } from '../shared/employees.service';
 export class EmployeeDetailsComponent implements OnInit {
   employeeId!: number;
   activeEmployee: Employee | undefined;
-  appState$!: Observable<any>;
 
   constructor(
     private employeeService: EmployeesService,
@@ -22,7 +19,6 @@ export class EmployeeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ employee }) => {
-      console.log('resolver employee: ', employee);
       this.employeeId = employee.id;
     });
 

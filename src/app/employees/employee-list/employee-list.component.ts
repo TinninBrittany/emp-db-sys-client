@@ -6,15 +6,8 @@ import { Employee } from '../shared/employee.model';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent {
   @Input() employees!: Employee[];
 
   displayedColumns: string[] = ['index', 'firstName', 'lastName', 'emailId', 'actions'];
-
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

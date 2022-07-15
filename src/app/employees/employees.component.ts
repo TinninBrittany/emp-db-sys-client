@@ -14,7 +14,6 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe( (employees: Employee[]) => {
-      console.log('employeesList: ', employees)
       this.employeeList = employees;
     })
   }
