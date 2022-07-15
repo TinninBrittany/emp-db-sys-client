@@ -8,15 +8,14 @@ import { EmployeesService } from './shared/employees.service';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employees: Employee[] = [];
+  employeeList: Employee[] = [];
 
   constructor(private employeeService: EmployeesService) { }
 
   ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe( res => {
-      console.log('res: ', res)
-      this.employees = res;
-      console.log('response: ', this.employees)
+    this.employeeService.getEmployees().subscribe( (employees: Employee[]) => {
+      console.log('employeesList: ', employees)
+      this.employeeList = employees;
     })
   }
 

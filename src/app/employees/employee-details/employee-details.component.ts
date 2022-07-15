@@ -1,27 +1,32 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Employee } from '../shared/employee.model';
+import { EmployeesService } from '../shared/employees.service';
 
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
-  styleUrls: ['./employee-details.component.css']
+  styleUrls: ['./employee-details.component.css'],
 })
-export class EmployeeDetailsComponent implements OnInit, OnDestroy {
+export class EmployeeDetailsComponent implements OnInit {
   employeeId!: number;
-  
-  private routerSubscription: any;
+  activeEmployee: Employee | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private employeeService: EmployeesService) {}
 
   ngOnInit(): void {
-    this.routerSubscription = this.route.params.subscribe(params => {
-      this.employeeId = params['id'];
-    })
-  }
+    this.employeeId = history.state.employeeId;
+    console.log('this.employeeId: ', this.employeeId);
 
-  ngOnDestroy(): void {
-    this.routerSubscription.unsubscribe();
+    this.employeeService
+      .getEmployeeById(this.employeeId)
+      .subscribe((employee: Employee) => {
+        this.activeEmployee = {
+          id: employee.id,
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          emailId: employee.emailId,
+        };
+      });
   }
-
 }

@@ -17,16 +17,4 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  viewEmployee(employeeId: number) {
-    console.log('employee Id: ', employeeId)
-    console.log('View Employee')
-  }
-
-  updateEmployee() {
-    console.log('Update Employee')
-  }
-  
-  deleteEmployee() {
-    console.log('Delete Employee')
-  }
 }

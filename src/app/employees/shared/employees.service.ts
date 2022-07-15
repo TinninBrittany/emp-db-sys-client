@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { Employee } from './employee.model';
 
 @Injectable({
@@ -12,8 +12,11 @@ export class EmployeesService {
   constructor(private http:HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
-    console.log('url: ', this.baseURL + '/employees')
     return this.http.get<Employee[]>(this.baseURL + '/employees');
+  }
+
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(this.baseURL + `/employees/${id}`)
   }
   
 }

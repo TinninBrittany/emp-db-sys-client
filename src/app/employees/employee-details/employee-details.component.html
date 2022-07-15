@@ -1,7 +1,7 @@
 <h1>Employee {{employeeId}} Information</h1>
 
-<h3>Employee First Name</h3>
-<h3>Employee Last Name</h3>
-<h3>Employee Email</h3>
+<h3>Employee First Name {{activeEmployee?.firstName}}</h3>
+<h3>Employee Last Name {{activeEmployee?.lastName}}</h3>
+<h3>Employee Email {{activeEmployee?.emailId}}</h3>
 
 <button routerLink="/employees">Back</button>
