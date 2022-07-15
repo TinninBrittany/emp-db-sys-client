@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { EmployeesModule } from './employees/employees.module';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { MaterialModuleModule } from './shared/material-module/material-module.module';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

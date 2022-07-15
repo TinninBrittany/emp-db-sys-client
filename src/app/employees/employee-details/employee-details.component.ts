@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { catchError, filter, map, Observable, of, throwError, tap } from 'rxjs';
 import { Employee } from '../shared/employee.model';
 import { EmployeesService } from '../shared/employees.service';
 
@@ -11,12 +13,18 @@ import { EmployeesService } from '../shared/employees.service';
 export class EmployeeDetailsComponent implements OnInit {
   employeeId!: number;
   activeEmployee: Employee | undefined;
+  appState$!: Observable<any>;
 
-  constructor(private employeeService: EmployeesService) {}
+  constructor(
+    private employeeService: EmployeesService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.employeeId = history.state.employeeId;
-    console.log('this.employeeId: ', this.employeeId);
+    this.activatedRoute.data.subscribe(({ employee }) => {
+      console.log('resolver employee: ', employee);
+      this.employeeId = employee.id;
+    });
 
     this.employeeService
       .getEmployeeById(this.employeeId)
