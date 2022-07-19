@@ -1,7 +1,7 @@
 <table mat-table [dataSource]="employees">
     <!-- Position Column -->
   <ng-container matColumnDef="index">
-    <th mat-header-cell *matHeaderCellDef style.color="accent"> No. </th>
+    <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
   </ng-container>
 

@@ -1,4 +1,6 @@
 <div class="container">
     <button mat-raised-button color="accent" (click)="addEmployee()">Add Employee</button>
-    <app-employee-list [employees]="employeeList"></app-employee-list>
+    <div class="" *ngIf="employeeList.length > 0">
+        <app-employee-list [employees]="employeeList"></app-employee-list>
+    </div>
 </div>
